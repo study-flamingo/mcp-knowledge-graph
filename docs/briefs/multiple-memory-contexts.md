@@ -6,12 +6,12 @@ This document outlines the technical implementation plan for adding multiple mem
 
 ## Background
 
-Currently, the MCP Knowledge Graph server uses a single memory file specified by the `--memory-path` parameter. Issue #6 requested the ability to define different memory files for different projects, allowing Claude to access project-based memory.
+Currently, the MCP Knowledge Graph server uses a single memory file specified by the `--memory-path` parameter. Issue #6 requested the ability to define different memory files for different projects, allowing AI models to access project-based memory.
 
 ## User Personas
 
-1. **Set-and-Forget Users**: Want a single memory file location configured once in Claude Desktop
-2. **Multi-Context Users**: Need to switch between different memory contexts while using Claude Desktop
+1. **Set-and-Forget Users**: Want a single memory file location configured once in their AI platform
+2. **Multi-Context Users**: Need to switch between different memory contexts while using their AI platform
 3. **Developers**: Comfortable with project-based approaches and explicit path management
 
 ## Implementation Details
@@ -33,7 +33,7 @@ interface MemoryContext {
   };
 }
 
-type PathTemplate = string;  // e.g., "{projectDir}/.claude-memory.jsonl"
+type PathTemplate = string;  // e.g., "{projectDir}/.ai-memory.jsonl"
 
 interface ContextsConfig {
   activeContext: string;
@@ -239,19 +239,19 @@ For existing users:
   "contexts": [
     {
       "name": "default",
-      "path": "/Users/username/.claude-memory/default.jsonl",
+      "path": "/Users/username/.ai-memory/default.jsonl",
       "isProjectBased": false,
       "description": "Default memory context"
     },
     {
       "name": "work",
-      "path": "/Users/username/.claude-memory/work.jsonl",
+      "path": "/Users/username/.ai-memory/work.jsonl",
       "isProjectBased": false,
       "description": "Work-related memories"
     },
     {
       "name": "project-specific",
-      "path": "{projectDir}/.claude-memory.jsonl",
+      "path": "{projectDir}/.ai-memory.jsonl",
       "isProjectBased": true,
       "description": "Project-specific memories",
       "projectDetectionRules": {
@@ -263,7 +263,7 @@ For existing users:
 }
 ```
 
-### Claude Desktop Configuration
+### AI Platform Configuration Example
 
 ```json
 {
@@ -274,7 +274,7 @@ For existing users:
         "-y",
         "@modelcontextprotocol/server-memory",
         "--contexts-directory",
-        "/Users/username/.claude-memory/contexts",
+        "/Users/username/.ai-memory/contexts",
         "--default-context",
         "personal"
       ]

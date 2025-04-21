@@ -33,9 +33,9 @@ npm init -y
   },
   "keywords": [
     "mcp",
-    "claude",
     "knowledge-base",
-    "ai"
+    "ai",
+    "memory"
   ],
   "author": "Your Name",
   "license": "MIT"
@@ -54,7 +54,7 @@ console.log('MCP Knowledge Base - Coming Soon');
 # MCP Knowledge Base
 
 > [!NOTE]
-> This package is currently in development. Future versions will provide knowledge base functionality for Claude AI.
+> This package is currently in development. Future versions will provide knowledge base functionality for AI models that support the Model Context Protocol (MCP).
 
 ## Coming Soon
 

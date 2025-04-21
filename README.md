@@ -2,7 +2,7 @@
 
 An improved implementation of persistent memory using a local knowledge graph with a customizable `--memory-path`.
 
-This lets Claude remember information about the user across chats.
+This lets AI models remember information about the user across chats. It works with any AI model that supports the Model Context Protocol (MCP) or function calling capabilities.
 
 > [!NOTE]
 > This is a fork of the original [Memory Server](https://github.com/modelcontextprotocol/servers/tree/main/src/memory) and is intended to not use the ephemeral memory npx installation method.
@@ -149,9 +149,11 @@ Example:
     - Relations between requested entities
   - Silently skips non-existent nodes
 
-## Usage with Claude Desktop
+## Usage with MCP-Compatible Platforms
 
-### Setup
+This server can be used with any AI platform that supports the Model Context Protocol (MCP) or function calling capabilities, including Claude, GPT, Llama, and others.
+
+### Setup with Claude Desktop
 
 Add this to your claude_desktop_config.json:
 
@@ -168,6 +170,10 @@ Add this to your claude_desktop_config.json:
   }
 }
 ```
+
+### Setup with Other AI Platforms
+
+Any AI platform that supports function calling or the MCP standard can connect to this server. The specific configuration will depend on the platform, but the server exposes standard tools through the MCP interface.
 
 ### Custom Memory Path
 
@@ -188,9 +194,9 @@ If no path is specified, it will default to memory.jsonl in the server's install
 
 ### System Prompt
 
-The prompt for utilizing memory depends on the use case. Changing the prompt will help the model determine the frequency and types of memories created.
+The prompt for utilizing memory depends on the use case and the AI model you're using. Changing the prompt will help the model determine the frequency and types of memories created.
 
-Here is an example prompt for chat personalization. You could use this prompt in the "Custom Instructions" field of a [Claude.ai Project](https://www.anthropic.com/news/projects).
+Here is an example prompt for chat personalization that can be adapted for any AI model. For Claude users, you could use this prompt in the "Custom Instructions" field of a [Claude.ai Project](https://www.anthropic.com/news/projects). For other models, adapt it to their respective instruction formats.
 
 ```txt
 Follow these steps for each interaction:
@@ -203,7 +209,7 @@ Follow these steps for each interaction:
    - Always begin your chat by saying only "Remembering..." and retrieve all relevant information from your knowledge graph
    - Always refer to your knowledge graph as your "memory"
 
-3. Memory
+3. Memory Gathering:
    - While conversing with the user, be attentive to any new information that falls into these categories:
      a) Basic Identity (age, gender, location, job title, education level, etc.)
      b) Behaviors (interests, habits, etc.)
@@ -215,8 +221,19 @@ Follow these steps for each interaction:
    - If any new information was gathered during the interaction, update your memory as follows:
      a) Create entities for recurring organizations, people, and significant events
      b) Connect them to the current entities using relations
-     b) Store facts about them as observations
+     c) Store facts about them as observations
 ```
+
+## Integration with Other AI Models
+
+This server implements the Model Context Protocol (MCP) standard, making it compatible with any AI model that supports function calling. The knowledge graph structure and API are model-agnostic, allowing for flexible integration with various AI platforms.
+
+To integrate with other models:
+
+1. Configure the model to access the MCP server
+2. Ensure the model can make function calls to the exposed tools
+3. Adapt the system prompt to the specific model's instruction format
+4. Use the same knowledge graph operations regardless of the model
 
 ## License
 

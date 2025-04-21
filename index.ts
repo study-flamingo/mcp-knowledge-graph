@@ -192,7 +192,7 @@ class KnowledgeGraphManager {
 const knowledgeGraphManager = new KnowledgeGraphManager();
 
 
-// The server instance and tools exposed to Claude
+// The server instance and tools exposed to AI models
 const server = new Server({
   name: "mcp-knowledge-graph",
   version: "1.0.1",
