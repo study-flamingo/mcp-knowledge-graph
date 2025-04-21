@@ -1,5 +1,7 @@
 # NPM Package Name Reservation
 
+DONE
+
 > [!NOTE]
 > These instructions are for reserving the npm package name `mcp-knowledge-base` with a minimal placeholder package.
 

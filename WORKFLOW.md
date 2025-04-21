@@ -1,4 +1,4 @@
-# Development Workflow Setup
+# Development Workflow
 
 ## Initial Environment
 
