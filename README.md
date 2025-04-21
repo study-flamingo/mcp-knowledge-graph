@@ -1,4 +1,6 @@
-# Knowledge Graph Memory Server
+# `mcp-knowledge-graph`
+
+> Knowledge Graph Memory Server
 
 An improved implementation of persistent memory using a local knowledge graph with a customizable `--memory-path`.
 
