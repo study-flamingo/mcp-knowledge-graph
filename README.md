@@ -46,7 +46,7 @@ Example:
 ```json
 {
   "from": "John_Smith",
-  "to": "Anthropic",
+  "to": "ExampleCorp",
   "relationType": "works_at"
 }
 ```
