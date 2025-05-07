@@ -166,9 +166,22 @@ Add this to your claude_desktop_config.json:
       "command": "npx",
       "args": [
         "-y",
-        "@modelcontextprotocol/server-memory"
+        "mcp-knowledge-graph",
+        "--memory-path",
+        "/Users/shaneholloman/Dropbox/shane/db/memory.jsonl"
+      ],
+      "autoapprove": [
+        "create_entities",
+        "create_relations",
+        "add_observations",
+        "delete_entities",
+        "delete_observations",
+        "delete_relations",
+        "read_graph",
+        "search_nodes",
+        "open_nodes"
       ]
-    }
+    },
   }
 }
 ```
@@ -186,8 +199,24 @@ You can specify a custom path for the memory file:
   "mcpServers": {
     "memory": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory", "--memory-path", "/path/to/your/memory.jsonl"]
-    }
+      "args": [
+        "-y",
+        "mcp-knowledge-graph",
+        "--memory-path",
+        "/Users/shaneholloman/Dropbox/shane/db/memory.jsonl"
+      ],
+      "autoapprove": [
+        "create_entities",
+        "create_relations",
+        "add_observations",
+        "delete_entities",
+        "delete_observations",
+        "delete_relations",
+        "read_graph",
+        "search_nodes",
+        "open_nodes"
+      ]
+    },
   }
 }
 ```
