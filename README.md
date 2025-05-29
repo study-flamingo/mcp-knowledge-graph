@@ -15,9 +15,9 @@ This lets AI models remember information about the user across chats. It works w
 mcp-knowledge-graph
 ```
 
-![screen-of-server-name](img/server-name.png)
+![screen-of-server-name](https://raw.githubusercontent.com/shaneholloman/mcp-knowledge-graph/main/img/server-name.png)
 
-![read-function](/img/read-function.png)
+![read-function](https://raw.githubusercontent.com/shaneholloman/mcp-knowledge-graph/main/img/read-function.png)
 
 ## Core Concepts
 
