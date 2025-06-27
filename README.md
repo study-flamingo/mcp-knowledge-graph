@@ -1,8 +1,8 @@
-# Enhanced Knowledge Graph Memory Server with Temporal Observations
+# Knowledge Graph MCP Server 🔮
+
+A knowledge graph memory system for LLMs with temporal observations. *This is a fork of [@shaneholloman/mcp-knowledge-graph](https://github.com/shaneholloman/mcp-knowledge-graph)*
 
 An advanced implementation of persistent memory using a local knowledge graph with temporal observation support. This lets Claude remember information about users across chats with intelligent time-based categorization and automatic cleanup of outdated information.
-
-*This is a fork of [@shaneholloman/mcp-knowledge-graph](https://github.com/shaneholloman/mcp-knowledge-graph)*
 
 ## ✨ New Features
 
@@ -281,12 +281,15 @@ Add to your `claude_desktop_config.json`:
     *Note: The memory file path can also be specified with a command line arg,
     for example: `node path/to/index.js --memory-path path/to/your/memory.json`)*
 
+### Migration
+
+If you were previously using the root project for this fork ([@shaneholloman/mcp-knowledge-graph](https://github.com/shaneholloman/mcp-knowledge-graph)), you may already have a robust memory file. Updating the old entries is not necessary, as this fork provides backwards compatibility - however if you would like to update your old memory file, the easiest way is to have your LLM manually update the `memory.jsonl` file, with using this project as context for the operation. You can do this with any MCP/LLM client capable of filesystem access (e.g., Cursor, Roo Code, Claude Code/Desktop, etc.).
+
 ## System Prompt for Temporal Memory
 
-Knowledge graph features and utilization are greatly improved by setting a quality
-system prompt. As a sample, here's an enhanced system prompt that leverages temporal features:
+Knowledge graph features and utilization are greatly improved by setting a quality system prompt. As a sample, here's an enhanced system prompt that leverages temporal features:
 
-```
+```markdown
 # Memory Tool Usage
 
 Follow these steps for conversational interactions:
