@@ -1,11 +1,4 @@
 {
-    "compilerOptions": {
-        "outDir": "./dist",
-        "rootDir": ".",
-        "module": "nodenext",
-        "esModuleInterop": true,
-    },
-    "include": [
-        "./**/*.ts"
-    ]
+  "extends": "./tsconfig.base.json",
+  "include": ["./**/*.ts"]
 }
