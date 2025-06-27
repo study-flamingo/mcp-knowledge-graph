@@ -24,7 +24,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc -p ./tsconfig.json && shx chmod +x dist/*.js",
+    "build": "tsc -p ./tsconfig.json && shx chmod +x ./dist/index.js",
     "prepare": "npm run build",
     "watch": "tsc --watch",
     "dev": "tsc --watch",
