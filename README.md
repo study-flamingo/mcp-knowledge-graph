@@ -2,7 +2,9 @@
 
 An advanced implementation of persistent memory using a local knowledge graph with temporal observation support. This lets Claude remember information about users across chats with intelligent time-based categorization and automatic cleanup of outdated information.
 
-## 🆕 What's New in v0.7.0
+*This is a fork of [@shaneholloman/mcp-knowledge-graph](https://github.com/shaneholloman/mcp-knowledge-graph)*
+
+## ✨ New Features
 
 - **Temporal Observations**: Observations now include timestamps and durability categories
 - **Smart Cleanup**: Automatically remove outdated temporary observations
@@ -56,9 +58,9 @@ Observations now support temporal metadata to distinguish between permanent fact
 
 #### Durability Categories
 
-- **`permanent`**: Never expires (e.g., "Joel is a dentist", "Has ADHD")
-- **`long-term`**: Relevant for 2+ years (e.g., "Uses CareStack software", "Owns a dental practice")
-- **`short-term`**: Relevant for ~6 months (e.g., "Planning to sell practice", "Experiencing burnout")
+- **`permanent`**: Never expires (e.g., "Born in 1990", "Has a degree in Physics")
+- **`long-term`**: Relevant for 2+ years (e.g., "Works at Acme Corp", "Lives in New York")
+- **`short-term`**: Relevant for ~6 months (e.g., "Working on Project X", "Training for a marathon")
 - **`temporary`**: Relevant for ~1 month (e.g., "Currently learning TypeScript", "Traveling to Dominica")
 
 #### Observation Formats
@@ -78,7 +80,7 @@ Observations now support temporal metadata to distinguish between permanent fact
     
     // Permanent fact
     {
-      "content": "Is a dentist", 
+      "content": "Is a software engineer",
       "durability": "permanent"
     }
   ]
@@ -130,7 +132,7 @@ Add observations with optional temporal metadata.
 
 // Temporal objects with durability
 [
-  { content: "Is a dentist", durability: "permanent" },
+  { content: "Is a software engineer", durability: "permanent" },
   { content: "Learning TypeScript", durability: "temporary" },
   "Also likes tea" // Mixed formats work together
 ]
@@ -276,10 +278,13 @@ Add to your `claude_desktop_config.json`:
 ### Environment Variables
 
 - `MEMORY_FILE_PATH`: Custom path for memory storage (default: `memory.json`)
+    *Note: The memory file path can also be specified with a command line arg,
+    for example: `node path/to/index.js --memory-path path/to/your/memory.json`)*
 
 ## System Prompt for Temporal Memory
 
-Here's an enhanced system prompt that leverages temporal features:
+Knowledge graph features and utilization are greatly improved by setting a quality
+system prompt. As a sample, here's an enhanced system prompt that leverages temporal features:
 
 ```
 # Memory Tool Usage
@@ -287,7 +292,7 @@ Here's an enhanced system prompt that leverages temporal features:
 Follow these steps for conversational interactions:
 
 ## User Identification:
-You should assume that you are interacting with default_user (Dr. Joel)
+You should assume that you are interacting with the `default_user`.
 If you have not identified default_user, proactively try to do so.
 
 ## Memory Retrieval:
@@ -296,33 +301,38 @@ Always refer to your knowledge graph as your "memory"
 
 ## Memory Gathering:
 While conversing with the user, be attentive to any new information that falls into these categories:
-a) Professional Identity (dental practice details, specializations, software development skills, certifications, business roles, etc.)
-b) Practice Management (patient care protocols, treatment preferences, scheduling patterns, equipment, software systems, workflow optimizations, etc.)
+a) Professional Identity (job title, specializations, software development skills, certifications, business roles, etc.)
+b) Domain-Specific Knowledge (work protocols, project details, scheduling patterns, equipment, software systems, workflow optimizations, etc.)
 c) Technical Projects (current development projects, programming languages, frameworks, AI tools, automation workflows, deployment environments, etc.)
 d) Learning & Development (new technologies being explored, courses taken, conferences attended, skill gaps, learning goals, etc.)
-e) Professional Network (dental colleagues, software development contacts, AI/tech community connections, business partners, mentors, etc.)
-f) Task Management (recurring responsibilities, project deadlines, patient appointment patterns, development milestones, automation opportunities, etc.)
-g) Tools & Systems (practice management software, development tools, AI assistants, productivity apps, integrations, pain points, etc.)
-h) Business Operations (practice metrics, revenue goals, efficiency improvements, technology investments, growth strategies, etc.)
+e) Professional Network (colleagues, software development contacts, AI/tech community connections, business partners, mentors, etc.)
+f) Task Management (recurring responsibilities, project deadlines, appointment patterns, development milestones, automation opportunities, etc.)
+g) Tools & Systems (domain-specific software, development tools, AI assistants, productivity apps, integrations, pain points, etc.)
+h) Business Operations (KPIs, revenue goals, efficiency improvements, technology investments, growth strategies, etc.)
 
 ## Memory Update with Temporal Awareness:
 If any new information was gathered during the interaction, update your memory using appropriate durability:
 
 **Permanent**: Core identity, fundamental skills, permanent relationships
-- "Joel is a dentist", "Has ADHD", "Full name is Dr. Joel Casimir"
+- "Is a software engineer", "Has a degree in Computer Science", "Full name is Ada Lovelace"
 
 **Long-term**: Stable preferences, established systems, long-term goals
-- "Uses CareStack software", "Enjoys rock climbing", "Prefers TypeScript"
+- "Uses VS Code", "Enjoys long walks on the beach", "Prefers Python"
 
-**Short-term**: Current projects, temporary situations, 6-month goals  
-- "Planning to sell dental practice", "Learning new MCP features"
+**Short-term**: Current projects, temporary situations, 6-month goals
+- "Learning how to play the theremin", "Finishing their high school degree"
 
 **Temporary**: Immediate tasks, current states, monthly activities
-- "Currently working on memory server", "Traveling next week"
+- "Currently working on memory server", "Traveling to Saturn next week"
 
 Use add_observations with appropriate durability categories for new information.
 Regularly run cleanup_outdated_observations to maintain data quality.
 ```
+
+Add this to the system prompt of your LLM. For example, on Claude Desktop:
+
+1. Create a new project or open an existing project
+2. In the project knowledge section, add the above to your Project Instructions.
 
 ## Data Format & Migration
 
@@ -415,4 +425,4 @@ This MCP server is licensed under the MIT License. This means you are free to us
 
 ## Credits
 
-Enhanced by Dr. Joel Casimir with temporal observation capabilities. Original implementation by Anthropic PBC as part of the Model Context Protocol servers collection.
+Enhanced by the community with temporal observation capabilities. Original implementation by Anthropic PBC as part of the Model Context Protocol servers collection.
