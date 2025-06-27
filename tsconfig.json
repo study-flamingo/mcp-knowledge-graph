@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": ".",
+        "module": "nodenext",
+        "esModuleInterop": true,
+    },
+    "include": [
+        "./**/*.ts"
+    ]
+}
