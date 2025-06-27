@@ -13,16 +13,35 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Define memory file path using environment variable with fallback
-const defaultMemoryPath = path.join(__dirname, 'memory.json');
+// Parse command line arguments
+function parseArgs(): { memoryPath?: string } {
+    const args = process.argv.slice(2);
+    const result: { memoryPath?: string } = {};
+    
+    for (let i = 0; i < args.length; i++) {
+        if (args[i] === '--memory-path' && i + 1 < args.length) {
+            result.memoryPath = args[i + 1];
+            i++; // Skip next argument since we consumed it
+        }
+    }
+    
+    return result;
+}
 
-// If MEMORY_FILE_PATH is just a filename, put it in the same directory as the script
-const MEMORY_FILE_PATH = process.env.MEMORY_FILE_PATH
-    ? path.isAbsolute(process.env.MEMORY_FILE_PATH)
-        ? process.env.MEMORY_FILE_PATH
-        : path.join(__dirname, process.env.MEMORY_FILE_PATH)
-    : defaultMemoryPath;
+// Define memory file path with multiple sources (CLI args > env var > default)
+const defaultMemoryPath = path.join(path.dirname(fileURLToPath(import.meta.url)), 'memory.json');
+const cliArgs = parseArgs();
 
+const MEMORY_FILE_PATH = cliArgs.memoryPath 
+    ? path.isAbsolute(cliArgs.memoryPath)
+        ? cliArgs.memoryPath
+        : path.join(path.dirname(fileURLToPath(import.meta.url)), cliArgs.memoryPath)
+    : process.env.MEMORY_FILE_PATH
+        ? path.isAbsolute(process.env.MEMORY_FILE_PATH)
+            ? process.env.MEMORY_FILE_PATH
+            : path.join(path.dirname(fileURLToPath(import.meta.url)), process.env.MEMORY_FILE_PATH)
+        : defaultMemoryPath;
+        
 // NEW: Enhanced observation structure
 interface TimestampedObservation {
   content: string;

@@ -278,8 +278,7 @@ Add to your `claude_desktop_config.json`:
 ### Environment Variables
 
 - `MEMORY_FILE_PATH`: Custom path for memory storage (default: `memory.json`)
-    *Note: The memory file path can also be specified with a command line arg,
-    for example: `node path/to/index.js --memory-path path/to/your/memory.json`)*
+    *Note: The memory file path can also be specified with a command line arg, for example: `node path/to/index.js --memory-path path/to/your/memory.json`*
 
 ### Migration
 
