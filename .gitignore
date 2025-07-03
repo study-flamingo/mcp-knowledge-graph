@@ -101,3 +101,7 @@ coverage/
 # Temporary folders
 tmp/
 temp/
+
+.code-workspace
+.venv
+.vscode

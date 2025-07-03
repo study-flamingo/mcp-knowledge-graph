@@ -4,7 +4,9 @@ A knowledge graph memory system for LLMs with temporal observations. *This is a 
 
 An advanced implementation of persistent memory using a local knowledge graph with temporal observation support. This lets Claude remember information about users across chats with intelligent time-based categorization and automatic cleanup of outdated information.
 
-## ✨ New Features
+## ✨ Feature Improvements
+
+In addition to the features offered by the root repository at [@shaneholloman/mcp-knowledge-graph](https://github.com/shaneholloman/mcp-knowledge-graph):
 
 - **Temporal Observations**: Observations now include timestamps and durability categories
 - **Smart Cleanup**: Automatically remove outdated temporary observations
