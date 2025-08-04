@@ -85,7 +85,7 @@ get_observations_by_durability("user")
 
 ## Acknowledgments
 
-This enhanced version builds upon the excellent foundation provided by Anthropic's original MCP Memory Server. The temporal observation system was designed and implemented by Dr. Joel Casimir as part of exploring advanced knowledge management patterns for AI assistants.
+This enhanced version builds upon the excellent foundation provided by Anthropic's original MCP Memory Server. The temporal observation system was designed and implemented by the author as part of exploring advanced knowledge management patterns for AI assistants.
 
 ## Contributing
 
