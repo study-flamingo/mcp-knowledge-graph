@@ -1,3 +1,26 @@
+Metadata-Version: 2.4
+Name: mcp-server-memory-temporal
+Version: 0.7.0
+Summary: Enhanced MCP server for enabling memory for Claude through a knowledge graph with temporal observations and smart cleanup
+Author-email: "Dr. Joel Casimir" <jc214x@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/study-flamingo/mcp-server-memory-temporal
+Project-URL: Repository, https://github.com/study-flamingo/mcp-server-memory-temporal.git
+Project-URL: Issues, https://github.com/study-flamingo/mcp-server-memory-temporal/issues
+Keywords: mcp,memory,knowledge-graph,temporal,observations,claude,ai,python
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.13
+Requires-Python: >=3.13
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: fastmcp>=2.11.0
+Requires-Dist: pydantic>=2.0.0
+Requires-Dist: python-dotenv>=1.1.1
+Requires-Dist: typing-extensions>=4.5.0
+Dynamic: license-file
+
 # Knowledge Graph MCP Server 🔮 (Python)
 
 A knowledge graph memory system for LLMs with temporal observations. *This is a Python conversion of the TypeScript MCP knowledge graph server with enhanced features.*

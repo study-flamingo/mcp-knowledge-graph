@@ -1,0 +1,2 @@
+[console_scripts]
+iq-mcp = src.mcp_knowledge_graph.__main__:main
